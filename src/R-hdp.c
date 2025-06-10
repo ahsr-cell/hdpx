@@ -91,11 +91,11 @@ void rWriteHDP(SEXP result, HDP *hdp) {
   rWriteConparamVector(rReadListElement(result,"conparam"),hdp->conparam);
   rWriteBase(rReadListElement(result,"base"),hdp->base);
   rWriteListElement(result,"dpstate",rWriteIntVector(hdp->dpstate,hdp->numdp,0));
-  //Free(hdp->ppindex);
-  //Free(hdp->cpindex);
-  //Free(hdp->ttindex);
-  //Free(hdp->clik);
-  //Free(hdp);
+  //free(hdp->ppindex);
+  //free(hdp->cpindex);
+  //free(hdp->ttindex);
+  //free(hdp->clik);
+  //free(hdp);
 }
 
 /***************************************************************************/
@@ -628,10 +628,10 @@ void hdp_dpholdout(HDP *hdp, int jj) {
   conparam[cp].totalnd[tt] = 0;
   conparam[cp].totalnt[tt] = 0;
 
-  Free(dp->classnd);
-  Free(dp->classnt);
+  free(dp->classnd);
+  free(dp->classnt);
   if ( dpstate[jj] == ACTIVE )
-    Free(dp->beta);
+    free(dp->beta);
 
   dpstate[jj] = HELDOUT;
 }
